@@ -9,8 +9,11 @@ A simple SFML animation program that provides simple movements of a cowboy anima
 MAKE SURE YOU SET UP YOUR SFML LIBRARY CORRECTLY BEFORE THE GAME_
 
 Use SFML 2017 version for visual studio 2019
+
 -make sure your project is in "debug" mode
+
 Click on the project
+
 - go to properties
 -make sure to do every step following the link
 
