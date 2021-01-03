@@ -1,3 +1,7 @@
+/*
+
+-THIS PART IS CANCELLED-
+
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
@@ -11,3 +15,4 @@ using namespace sf;
 
 
 #endif
+*/
