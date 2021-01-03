@@ -1,0 +1,7 @@
+currentAnimation idle
+dead  spriteFile/DEAD_000.png  10
+jump  spriteFile/JUMP_000.png  10
+idle  spriteFile/IDLE_000.png  10
+run   spriteFile/RUN_000.png   10
+slide spriteFile/SLIDE_000.png 10
+
