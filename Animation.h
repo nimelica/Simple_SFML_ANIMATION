@@ -12,8 +12,7 @@ using namespace sf;
 
 class Model;
 
-class Animation    //recognize class instead of include it
-{
+class Animation {
 public:
 	//constructor/destructor
 	Animation();
