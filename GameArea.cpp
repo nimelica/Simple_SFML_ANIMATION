@@ -10,31 +10,26 @@ int counter = 0;
 int frameTime = 5;
 int numOfSprite = 10;
 
-GameArea::GameArea()
-{
+GameArea::GameArea(){
 	createWindow();
 	createEvents();
 }
 
-GameArea::~GameArea()
-{
+GameArea::~GameArea(){
 	delete window;
 }
 
-void GameArea::createWindow()
-{
+void GameArea::createWindow(){
 	settings.antialiasingLevel = 8;
 	window = new RenderWindow(VideoMode(width, height), "COWBOY GAME", Style::Close | Style::Titlebar, settings);
 	window->setFramerateLimit(60);
 }
 
-void GameArea::addModel(unique_ptr<Model>newModel)
-{
+void GameArea::addModel(unique_ptr<Model>newModel){
 	modelList.emplace_back(move(newModel));
 }
 
-void GameArea::startGameLoop()
-{
+void GameArea::startGameLoop(){
 	while (window->isOpen())
 	{
 		createEvents();
@@ -42,63 +37,49 @@ void GameArea::startGameLoop()
 	}
 }
 
-void GameArea::createEvents()
-{
+void GameArea::createEvents(){
 	while (window->pollEvent(eventObj))
-	{
+{
 		if (eventObj.type == Event::Closed) {
 			window->close();
 		}
-		else if (eventObj.type == Event::KeyPressed && eventObj.key.code == Keyboard::Escape)
-		{
+		else if (eventObj.type == Event::KeyPressed && eventObj.key.code == Keyboard::Escape){
 			window->close();
 		}
 		keyboardControl(eventObj);
 	}
 }
 
-void GameArea::keyboardControl(Event& event)
-{
+void GameArea::keyboardControl(Event& event){
 	if (event.type == Event::KeyPressed)
 	{
-		if (event.key.code == Keyboard::Left)
-		{
-			modelList[0]->run();
-
-		}
-
-		if (event.key.code == Keyboard::Right)
-		{
+		if (event.key.code == Keyboard::Left){
 			modelList[0]->run();
 		}
 
-		if (event.key.code == Keyboard::Up)
-		{
+		if (event.key.code == Keyboard::Right){
+			modelList[0]->run();
+		}
+
+		if (event.key.code == Keyboard::Up){
 			modelList[0]->jump();
 		}
 
-		if (event.key.code == Keyboard::Down)
-		{
+		if (event.key.code == Keyboard::Down){
 			modelList[0]->slide();
 		}
-
 	}
-	if (event.type == Event::KeyReleased)
-	{
-		if (event.key.code == Keyboard::Left)
-		{
+	if (event.type == Event::KeyReleased){
+		if (event.key.code == Keyboard::Left){
 			modelList[0]->idle();
 		}
-		if (event.key.code == Keyboard::Right)
-		{
+		if (event.key.code == Keyboard::Right){
 			modelList[0]->idle();
 		}
-		if (event.key.code == Keyboard::Up)
-		{
+		if (event.key.code == Keyboard::Up){
 			modelList[0]->idle();
 		}
-		if (event.key.code == Keyboard::Down)
-		{
+		if (event.key.code == Keyboard::Down){
 			modelList[0]->idle();
 		}
 	}
@@ -127,8 +108,7 @@ void GameArea::renderAnimation()
 
 void GameArea::renderBackground()
 {
-	if (backTexture.loadFromFile("spriteFile/forest.jpg") != true)
-	{
+	if (backTexture.loadFromFile("spriteFile/forest.jpg") != true){
 		cerr << "Background file not found!\n";
 	}
 	backSprite.setTexture(backTexture);
