@@ -4,24 +4,19 @@
 using namespace std;
 using namespace sf;
 
-Animation::Animation()
-{
+Animation::Animation(){
 	totalFrame = 0;
 	currentFrameNumber = 0;
 	frameTime = 3;
 	frameCounter = 0;
 }
 
-Animation::~Animation()
-{
-}
+Animation::~Animation(){}
 
-void Animation::addAnimation(string firstFileName, int frameNum, float xpos, float ypos)
-{
+void Animation::addAnimation(string firstFileName, int frameNum, float xpos, float ypos){
 	totalFrame = frameNum;
 
-	for (int i = 0; i < totalFrame; i++)
-	{
+	for (int i = 0; i < totalFrame; i++){
 		unique_ptr<Texture>newTexture = make_unique<Texture>();  //instead of Texture* newTexture = new Texture
 		unique_ptr<Sprite>newSprite = make_unique<Sprite>();     //instead of Sprite*newSprite=new Sprite;
 
@@ -41,26 +36,23 @@ void Animation::addAnimation(string firstFileName, int frameNum, float xpos, flo
 	}
 }
 
-void Animation::render(RenderWindow* window)
-{
+void Animation::render(RenderWindow* window){
 	window->draw(*spriteList[currentFrameNumber]);
 }
 
-void Animation::update()
-{
-	if (frameCounter == frameTime)                                  //if update function called as much as frame time
+void Animation::update(){
+	if (frameCounter == frameTime)                                      //if update function called as much as frame time
 	{
 		currentFrameNumber = (currentFrameNumber + 1) % totalFrame; //current frame number start from 0 to 9
 		frameCounter = 0;                                           //+1 increse it by it cannot access the limit(10) by using % 
-	}                                                               //then make the counter empty
+	}                                                                   //then make the counter empty
 	else 
 	{
 		frameCounter++;
 	}
 }
 
-void Animation::frameTimeUpdate(int time)                          //we can change animation speed by updating value
-{
+void Animation::frameTimeUpdate(int time){                          //we can change animation speed by updating value
 	frameTime = time;
 }
 
